@@ -3,7 +3,7 @@
 ## Persiapan database
 
 1. Gunakan project Supabase/PostgreSQL untuk menyimpan data buku.
-2. Salin `Backend/.env.example` menjadi `Backend/.env`, lalu isi kredensial database dari Supabase. Biarkan `DB_SSL=true` untuk Supabase.
+2. Salin `Backend/.env.example` menjadi `Backend/.env`, lalu isi `DATABASE_URL` atau variabel `DB_*` dengan kredensial database dari Supabase. Biarkan `DB_SSL=true` untuk Supabase.
 3. Jika tabel `books` belum ada, jalankan `Backend/schema.sql` sekali di Supabase SQL Editor.
 
 ## Menjalankan aplikasi
@@ -42,9 +42,9 @@ URL Pages: `https://rgps-preset-v2.github.io/ruangbaca/`.
 
 ### Vercel
 
-Buat dua project dari repository yang sama di team `pemweb`:
+Buat dua project dari repository GitHub yang sama:
 
-- **API**: Root Directory `Backend`. Vercel mendeteksi aplikasi Express. Tambahkan variabel database dari Supabase (`DB_USER`, `DB_HOST`, `DB_NAME`, `DB_PASSWORD`, `DB_PORT`, `DB_SSL=true`) pada Project Settings → Environment Variables.
+- **API**: Root Directory `Backend`. Tambahkan `DATABASE_URL` dari Supabase, atau variabel `DB_USER`, `DB_HOST`, `DB_NAME`, `DB_PASSWORD`, `DB_PORT`, dan `DB_SSL=true`, pada Project Settings → Environment Variables. Deploy API terlebih dahulu.
 - **Frontend**: Root Directory `Frontend`, framework Vite, build command `npm run build`, output directory `dist`. Set `VITE_API_URL` ke domain project API.
 
 Gunakan URL API Vercel yang sama untuk repository variable `VITE_API_URL` agar GitHub Pages juga dapat mengakses backend.
